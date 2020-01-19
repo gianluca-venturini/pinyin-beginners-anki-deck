@@ -8,22 +8,20 @@
 <br/>
 {{Extra Info}}
 
-<!--<input id="secrets">-->
-
 <script>
 function shuffle(array) {
- var i = array.length, tmpVal, rnd;
- // While there remain elements to shuffle...
- while (0 !== i) {
-  // Pick a remaining element...
-  rnd = Math.floor(Math.random() * i);
-  i -= 1;
-  // And swap it with the current element.
-  tmpVal = array[i];
-  array[i] = array[rnd];
-  array[rnd] = tmpVal;
- }
- return array;
+  var i = array.length, tmpVal, rnd;
+  // While there remain elements to shuffle...
+  while (0 !== i) {
+    // Pick a remaining element...
+    rnd = Math.floor(Math.random() * i);
+    i -= 1;
+    // And swap it with the current element.
+    tmpVal = array[i];
+    array[i] = array[rnd];
+    array[rnd] = tmpVal;
+  }
+  return array;
 }
 
 function getElems(fun) {
@@ -48,27 +46,23 @@ function playAudio(id) {
       link.click();
     }
   } catch (e) {}
-  // document.querySelector(id+" > .replaybutton").click();
 }
-</script>
 
-<script>
-  let max_sounds_shown = 3;
+var max_sounds_shown = 3;
 
-  var posibilities = getElems(function() {/*EOL {{Audio 1}} EOL*/});
-  // shuffling array
-  shuffle(posibilities);
-  posibilities = posibilities.slice(0, max_sounds_shown);
+var posibilities = getElems(function() {/*EOL {{Audio 1}} EOL*/});
+// shuffling array
+shuffle(posibilities);
+posibilities = posibilities.slice(0, max_sounds_shown);
 
-  // getting elements to play
-  var textToInsert = "";
-  posibilities.forEach( function(elem) {
-    textToInsert += elem;
-  });
+// getting elements to play
+var textToInsert = "";
+posibilities.forEach( function(elem) {
+  textToInsert += elem;
+});
 
-  document.getElementById("to_play").innerHTML = textToInsert;
+document.getElementById("to_play").innerHTML = textToInsert;
 
-  playAudio('#to_play');
+playAudio('#to_play');
 
-  //document.querySelector("#secrets").value = JSON.stringify(document.querySelector("#to_play").innerHTML);
 </script>
